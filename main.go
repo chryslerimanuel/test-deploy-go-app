@@ -2,28 +2,23 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"net/http"
+	"os"
 )
 
 func main() {
 	fmt.Println("server started")
 
-	// for _, env := range os.Environ() {
-	// 	fmt.Println(env)
-	// }
-
-	// fmt.Println(os.Getenv("HOMEPATH"))
-
 	port := os.Getenv("PORT")
 	if port == "" {
-    port = "9000" // Default port if not specified
+		port = "9000"
 	}
 
-	// //root
+	//root
 	http.HandleFunc("/", handlerHello)
 
 	http.HandleFunc("/berhasil", handlerSuccess)
+	http.HandleFunc("/sukses", handlerSuccess)
 
 	http.ListenAndServe(":"+port, nil)
 }
@@ -34,6 +29,6 @@ func handlerHello(w http.ResponseWriter, r *http.Request) {
 }
 
 func handlerSuccess(w http.ResponseWriter, r *http.Request) {
-	var message = "Hore!!"
+	var message = "Hore Ini update terbaru!!"
 	w.Write([]byte(message))
 }
