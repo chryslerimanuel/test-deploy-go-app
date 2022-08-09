@@ -2,25 +2,31 @@ package main
 
 import (
 	"fmt"
-	"net/http"
+	"os"
 )
 
 func main() {
 	fmt.Println("server started")
-	//root
-	http.HandleFunc("/", handlerHello)
 
-	http.HandleFunc("/berhasil", handlerSuccess)
+	// for _, env := range os.Environ() {
+	// 	fmt.Println(env)
+	// }
 
-	http.ListenAndServe("localhost:9001", nil)
+	fmt.Println(os.Getenv("HOMEPATH"))
+	// //root
+	// http.HandleFunc("/", handlerHello)
+
+	// http.HandleFunc("/berhasil", handlerSuccess)
+
+	// http.ListenAndServe("localhost:9091", nil)
 }
 
-func handlerHello(w http.ResponseWriter, r *http.Request) {
-	var message = "Hello world!"
-	w.Write([]byte(message))
-}
+// func handlerHello(w http.ResponseWriter, r *http.Request) {
+// 	var message = "Hello world!"
+// 	w.Write([]byte(message))
+// }
 
-func handlerSuccess(w http.ResponseWriter, r *http.Request) {
-	var message = "Hore!!"
-	w.Write([]byte(message))
-}
+// func handlerSuccess(w http.ResponseWriter, r *http.Request) {
+// 	var message = "Hore!!"
+// 	w.Write([]byte(message))
+// }
